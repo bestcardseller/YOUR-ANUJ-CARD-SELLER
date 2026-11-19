@@ -1,0 +1,900 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANUJ UNIVERSE</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #03030b;
+            color: #f5f3ff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-image: radial-gradient(ellipse at top, #17103b 0%, transparent 55%);
+        }
+
+        .topbar {
+            padding: 18px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #34205c;
+            background: #080713;
+            box-shadow: 0 0 25px #5814a533;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            font-weight: bold;
+            font-size: 19px;
+            background: linear-gradient(135deg, #d52aff, #00eaff);
+            box-shadow: 0 0 22px #bd32ff88;
+        }
+
+        .brand h1 {
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+            .brand h1 span {
+                color: #22eaff;
+            }
+
+        .brand small {
+            display: block;
+            color: #958bb8;
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .status {
+            color: #00ff91;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: min(1100px, 94%);
+            margin: 25px auto;
+        }
+
+        .welcome {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 22px;
+            border: 1px solid #6130a0;
+            border-radius: 22px;
+            background: linear-gradient(110deg, #1c1037, #09091a);
+            box-shadow: 0 0 20px #8c24ff22;
+        }
+
+        .welcome-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 2px solid #c03cff;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 0 18px #a52aff;
+        }
+
+        .welcome h2 {
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .welcome p {
+            color: #00f59b;
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px 10px;
+            border: 1px solid #3e2867;
+            border-radius: 18px;
+            background: #0d0a1b;
+        }
+
+            .stat small {
+                color: #a49bc4;
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+
+            .stat h2 {
+                color: #24eaff;
+                font-size: 19px;
+                margin-top: 8px;
+                text-shadow: 0 0 12px #00dfff;
+            }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 8px 0 20px;
+        }
+
+        .filter {
+            flex: 0 0 auto;
+            padding: 12px 20px;
+            border: 1px solid #49306f;
+            border-radius: 30px;
+            color: #b9acd8;
+            background: #100b20;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .filter.active,
+            .filter:hover {
+                color: white;
+                border-color: #ec38d9;
+                background: linear-gradient(100deg, #9d19f3, #ec31b8);
+                box-shadow: 0 0 18px #d42bdb77;
+            }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0 18px;
+        }
+
+            .section-heading h2 {
+                color: #20eaff;
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+
+            .section-heading span {
+                color: #24dff0;
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            padding: 15px;
+            border-radius: 23px;
+            border: 1px solid #62359a;
+            background: linear-gradient(145deg, #17102b, #080712);
+            box-shadow: 0 0 20px #8426d322;
+        }
+
+        .gift-visual {
+            min-height: 220px;
+            padding: 18px;
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: inset 0 0 30px #ffffff12, 0 8px 22px #0008;
+        }
+
+            .gift-visual::after {
+                content: "";
+                position: absolute;
+                width: 210px;
+                height: 210px;
+                border-radius: 50%;
+                right: -80px;
+                top: 35px;
+                background: #25eaff22;
+                filter: blur(8px);
+            }
+
+        .purple {
+            background: linear-gradient(130deg, #5520a6, #111b57 60%, #052b56);
+        }
+
+        .red {
+            background: linear-gradient(130deg, #a80039, #4b092d 60%, #1a123d);
+        }
+
+        .blue {
+            background: linear-gradient(130deg, #064c9e, #15145b 60%, #006c89);
+        }
+
+        .gold {
+            background: linear-gradient(130deg, #75431b, #33204c 60%, #102f50);
+        }
+
+        .visual-top,
+        .visual-bottom,
+        .serial,
+        .chip,
+        .wifi {
+            position: relative;
+            z-index: 1;
+        }
+
+        .visual-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .chip {
+            width: 53px;
+            height: 42px;
+            margin-top: 14px;
+            border-radius: 9px;
+            border: 2px solid #d5a43c;
+            background: linear-gradient(90deg, transparent 45%, #a87819 46%, #a87819 53%, transparent 54%), linear-gradient(0deg, transparent 45%, #a87819 46%, #a87819 53%, transparent 54%), linear-gradient(135deg, #fff0a1, #c28a18, #ffe28a);
+            box-shadow: 0 0 12px #ffcc5a66;
+        }
+
+        .wifi {
+            font-size: 27px;
+            margin-top: 3px;
+            color: #d7d9ff;
+        }
+
+        .serial {
+            font-size: 17px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .visual-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+            .visual-bottom span {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .visual-bottom strong {
+                font-size: 25px;
+            }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #8e20df;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .red-tag {
+            background: #c51c4b;
+        }
+
+        .blue-tag {
+            background: #087cc8;
+        }
+
+        .gold-tag {
+            background: #a66b1e;
+        }
+
+        .stock {
+            color: #36e9cf;
+            font-size: 9px;
+        }
+
+        .product-info h3 {
+            margin-top: 13px;
+            font-size: 16px;
+        }
+
+        .price {
+            color: #00f58d;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 12px 0;
+            text-shadow: 0 0 12px #00ff8a66;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 13px;
+            color: #04111b;
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background: linear-gradient(100deg, #00d9ee, #00ffa6);
+            box-shadow: 0 0 20px #00eacb66;
+            transition: .2s;
+        }
+
+            .buy-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 28px #00f5d9;
+            }
+
+            .buy-btn span {
+                margin-left: 8px;
+            }
+
+        footer {
+            text-align: center;
+            padding: 25px 10px;
+            border-top: 1px solid #42226d;
+            color: #23dff5;
+            font-size: 11px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
+        }
+
+            footer p,
+            footer small {
+                flex-basis: 100%;
+                color: #958bb8;
+            }
+
+        /* PAYMENT POPUP */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            padding: 18px;
+            background: #000c;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .modal.show {
+                display: flex;
+            }
+
+        .modal-box {
+            position: relative;
+            width: min(390px, 100%);
+            padding: 27px 20px;
+            border: 1px solid #a33cff;
+            border-radius: 22px;
+            background: #100b20;
+            text-align: center;
+            box-shadow: 0 0 35px #9c27ff66;
+        }
+
+            .modal-box h2 {
+                color: #35eaff;
+                font-size: 19px;
+            }
+
+        .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            border: 0;
+            background: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #selectedProduct {
+            margin-top: 18px;
+            color: #c4b5e8;
+        }
+
+        .pay-amount {
+            margin: 10px 0 18px;
+            color: #00f5a0;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        #qrcode {
+            width: 180px;
+            min-height: 180px;
+            margin: 0 auto 18px;
+            padding: 10px;
+            border-radius: 12px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            #qrcode img,
+            #qrcode canvas {
+                max-width: 100%;
+                height: auto;
+            }
+
+        .upi-label {
+            color: #a69bc3;
+            font-size: 12px;
+        }
+
+        .upi-id {
+            margin: 7px 0 16px;
+            color: #36eaff;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .pay-link {
+            display: block;
+            padding: 15px;
+            border-radius: 12px;
+            color: #04111b;
+            background: linear-gradient(100deg, #00d9ee, #00ffa6);
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        .payment-note {
+            color: #aaa1c4;
+            font-size: 11px;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 650px) {
+            .topbar {
+                padding: 14px 4%;
+            }
+
+            .brand h1 {
+                font-size: 16px;
+            }
+
+            .brand small {
+                font-size: 8px;
+            }
+
+            .container {
+                width: 94%;
+                margin-top: 18px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .gift-visual {
+                min-height: 230px;
+            }
+
+            .section-heading h2 {
+                font-size: 15px;
+            }
+
+            .section-heading span {
+                font-size: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">AU</div>
+            <div>
+                <h1>ANUJ <span>UNIVERSE</span></h1>
+                <small>YOUR DIGITAL CARDING DESTINATION</small>
+            </div>
+        </div>
+        <div class="status">● ONLINE</div>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome">
+            <div class="welcome-icon">AU</div>
+            <div>
+                <h2>WELCOME</h2>
+                <p>● PUBLIC GAMING CARD STORE</p>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat">
+                <small>PREMIUM COLLECTION</small>
+                <h2>TRUSTED CARDING</h2>
+            </div>
+            <div class="stat">
+                <small>PAYMENT MODE</small>
+                <h2>UPI</h2>
+            </div>
+        </section>
+
+        <nav class="filters">
+            <button class="filter active" data-filter="all">ALL</button>
+            <button class="filter" data-filter="gaming">GAMING</button>
+            <button class="filter" data-filter="mastercard">MASTERCARD</button>
+            <button class="filter" data-filter="ff top-up">FF TOP-UP</button>
+            <button class="filter" data-filter="ff membership">FF MEMBERSHIP</button>
+        </nav>
+
+        <div class="section-heading">
+            <h2>✦ PREMIUM GAMING CARDS</h2>
+            <span>AVAILABLE ITEMS</span>
+        </div>
+
+        <section class="products">
+
+            <article class="product-card" data-category="gaming">
+                <div class="gift-visual purple">
+                    <div class="visual-top">
+                        <span>GAMING</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">9215-8123-4532-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹199</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag">GAMING</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>Gaming Card</h3>
+                    <div class="price">₹199</div>
+                    <button class="buy-btn" data-name="Gaming Gift Card" data-price="199">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="mastercard">
+                <div class="gift-visual red">
+                    <div class="visual-top">
+                        <span>MASTERCARD</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">8386-7491-9344-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹400</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag red-tag">MASTERCARD</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>Mastercard Card</h3>
+                    <div class="price">₹400</div>
+                    <button class="buy-btn" data-name="Entertainment Gift Card" data-price="400">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="ff top-up">
+                <div class="gift-visual blue">
+                    <div class="visual-top">
+                        <span>FF TOP-UP</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">8381-6201-2522-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹160</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag blue-tag">FF TOP-UP</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>FF Top-Up Card</h3>
+                    <div class="price">₹160</div>
+                    <button class="buy-btn" data-name="Shopping Gift Card" data-price="160">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="ff membership">
+                <div class="gift-visual gold">
+                    <div class="visual-top">
+                        <span>FF MEMBERSHIP</span><span>CARD VOUCHER</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">9164-9428-7427-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹159</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag gold-tag">FF MEMBERSHIP</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>FF Membership Card</h3>
+                    <div class="price">₹159</div>
+                    <button class="buy-btn" data-name="Premium Gift Card" data-price="159">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="gaming">
+                <div class="gift-visual purple">
+                    <div class="visual-top">
+                        <span>RUPAY</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">9625-8173-4532-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹250</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag">RUPAY</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>GAMING Card</h3>
+                    <div class="price">₹250</div>
+                    <button class="buy-btn" data-name="Gaming Gift Card" data-price="250">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="gaming">
+                <div class="gift-visual blue">
+                    <div class="visual-top">
+                        <span>VISA</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">9615-8638-4295-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹350</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag">VISA</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>GAMING Card</h3>
+                    <div class="price">₹350</div>
+                    <button class="buy-btn" data-name="Gaming Gift Card" data-price="350">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="ff top-up">
+                <div class="gift-visual gold">
+                    <div class="visual-top">
+                        <span>FF TOP-UP</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">8365-0218-7319-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹320</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag">FF TOP-UP</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>FF Top-Up Card</h3>
+                    <div class="price">₹320</div>
+                    <button class="buy-btn" data-name="Gaming Gift Card" data-price="320">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="ff membership">
+                <div class="gift-visual red">
+                    <div class="visual-top">
+                        <span>FF MEMBERSHIP</span><span>PREMIUM CARD</span>
+                    </div>
+                    <div class="chip"></div>
+                    <div class="wifi">⌁</div>
+                    <div class="serial">3794-7391-4823-****</div>
+                    <div class="visual-bottom">
+                        <span>DIGITAL CARD VOUCHER</span>
+                        <strong>₹799</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="tag">FF MEMBERSHIP</span>
+                        <span class="stock">DIGITAL VOUCHER</span>
+                    </div>
+                    <h3>FF Membership Card</h3>
+                    <div class="price">₹799</div>
+                    <button class="buy-btn" data-name="Gaming Gift Card" data-price="799">
+                        BUY NOW <span>➜</span>
+                    </button>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <span>⚡ TRUSTED SELLER YOUR ANUJ*</span>
+        <span>◆ UPI PAYMENT</span>
+        <span>◉ CUSTOMER SUPPORT</span>
+        <p>© 2026 ANUJ UNIVERSE</p>
+        <small>*THANKS ALL MEMBERS BY BUYING CARD WITH MY WEBSITE.</small>
+    </footer>
+
+    <!-- PAYMENT POPUP -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-box">
+            <button class="close-btn" id="closeModal">×</button>
+            <h2>SECURE UPI PAYMENT</h2>
+            <p id="selectedProduct">Gift Card</p>
+            <div class="pay-amount" id="selectedPrice">₹0</div>
+            <div id="qrcode"></div>
+            <p class="upi-label">UPI ID</p>
+            <div class="upi-id">zxanuj@fam</div>
+            <a id="upiPay" class="pay-link" href="#">PAY WITH UPI APP</a>
+            <p class="payment-note">
+                Payment करने के बाद अपने UPI ऐप में transaction status जाँचें।
+                Order की पुष्टि केवल payment verification के बाद होगी।
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+const UPI_ID = "zxanuj@fam";
+const STORE_NAME = "ANUJ UNIVERSE";
+
+const modal = document.getElementById("paymentModal");
+const qrBox = document.getElementById("qrcode");
+const selectedProduct = document.getElementById("selectedProduct");
+const selectedPrice = document.getElementById("selectedPrice");
+const upiPay = document.getElementById("upiPay");
+
+// BUY NOW BUTTON
+document.querySelectorAll(".buy-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    const name = button.dataset.name;
+    const price = Number(button.dataset.price);
+
+    if (!name || !Number.isFinite(price) || price <= 0) {
+      alert("Invalid product details.");
+      return;
+    }
+
+    const upiLink =
+      "upi://pay?pa=" + encodeURIComponent(UPI_ID) +
+      "&pn=" + encodeURIComponent(STORE_NAME) +
+      "&am=" + encodeURIComponent(price.toFixed(2)) +
+      "&cu=INR" +
+      "&tn=" + encodeURIComponent(name);
+
+    selectedProduct.textContent = name;
+    selectedPrice.textContent = "₹" + price.toLocaleString("en-IN");
+
+    // Open payment popup
+    modal.classList.add("show");
+
+    // UPI app payment link
+    upiPay.href = upiLink;
+
+    // Generate QR code
+    qrBox.innerHTML = "";
+
+    if (typeof QRCode !== "undefined") {
+      new QRCode(qrBox, {
+        text: upiLink,
+        width: 160,
+        height: 160,
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } else {
+      qrBox.textContent = "QR unavailable. Use the UPI app button.";
+    }
+  });
+});
+
+// CLOSE POPUP
+document.getElementById("closeModal").addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+// Close when clicking outside popup
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    modal.classList.remove("show");
+  }
+});
+
+// CATEGORY FILTER
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const category = button.dataset.filter;
+
+    document.querySelectorAll(".product-card").forEach(card => {
+      card.style.display =
+        category === "all" || card.dataset.category === category
+          ? ""
+          : "none";
+    });
+  });
+});
+    </script>
+
+</body>
+</html>
